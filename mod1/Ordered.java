@@ -1,6 +1,6 @@
-/* command line and then prints out the 
-* distance between the points and the origin
-*
+/* This program takes in 3 command line args  
+*  and then checks if its orderd or not 
+*  will print out true or false 
 */
 
 
