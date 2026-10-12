@@ -1,1 +1,42 @@
 
+**Textbook-** 
+Static methods are methods other than main
+1st line in a static method is the signature that is the name and the 2nd part is the parameter variables and return type, bool will return bool, int will win ans string with string. 
+signature - return type - method name- arg type - variable
+whats inside are local variables and the method body with a return 
+can have multiple variables just have to passed from the main or other method 1st or youll get a crash 
+overloading is when you have 2 methods with the same name but different variables
+can use static methods to organize the code 
+can use private or public keywords to be able to access the method in another script or keep it inside 1 script only. 
+clients refer to a program that calls a given library method
+API- a contract between the client and the implementation that is a clear specification of what the method is to do
+implementation - implements the methods in an API, kept by convention in a file with the library name and a .java extension
+modular programming we break up each task into smaller, more manageable subtasks, then implement and independently debug code that addresses each subtask
+break down programs into smaller sizes, easier to manage and able to use that code for another project 
+if you encounter and old program do not touch it. 
+recursion is a program calling it self until it hits the base case
+dynamic programing - The basic idea is to recursively divide a complex problem into a number of simpler subproblems; store the answer to each of these subproblems; and, ultimately, use the stored answers to solve the original problem
+top down - we store or cache the result of each subproblem that we solve, so that the next time we need to solve the same subproblem, we can use the cached values instead of solving the subproblem from scratch
+bottom up - we compute solutions to all of the subproblems, starting with the “simplest” subproblems and gradually building up solutions to more and more complicated subproblems
+develop code with increments 
+solve easier problems 
+consider recursion solution 
+compile and run often 
+can build helper tools 
+
+**Programs**-
+
+Triangle- This was a fun program in that it was pretty quick to get down. using a method to do all the heavy lifting to do all the calculations. We did have to take in the input from the user to test it in the program. I ended up making a method that took in 3 ints that were passed from the main method which were user args 0-2. Then from there it as about doing the calculations on the sides and returning it true or false. 
+
+SAT- This was a hard one, I did overlook a text in ch 2.2 in the textbook where they used a script Gaussian.java to help determine the amount of people below a certain score. that was a relief and decided to implement that into the program SAT. I still had to do a lot of other things such as make the variables to compare it to, the high and low scores, the average and the standard deviation along with the score precision and the binary search to find the lowest score.  The main take away from this project and the chapter was to try to find things in the textbook for helper scripts to use with the program that I am trying to make.  
+
+ReverseString- This was another one of the fun quick ones especially compared to the SAT one which was not fun. The time consuming part was adjusting the string. I had a few ideas on how to do it which were time consuming. At first I was thinking about putting it into an array and then shift each element to the end but the book said to stay away with arrays when doing recursion so I ended that route and decided to take the string itself and then pass length through and if statment to do the recursion. From the if i made a return which went through the entire string and used substring to take off the 1st index of the string and place it at the back until the string is complete. 
+
+RecursiveBinarySearch- This one was a hard one to think about initially because I was trying not to make it more complicated then it is which is something that tends to happen more often then not. i first started going through getting the length and passing it into a new method that would return true or false pending if the int was in the array. I then had to make more variables to move around in the array to search for the int in a binary search way which it but it in half and then look at each half to see if the target is in the left or right side. I was having some trouble at this point in that i was trying to move the mid number instead of the mid position but it was an easy fix to get the program up and running,  
+
+Partition- This was an interesting one in that I was using method overloading with recursion to get the numbers printed out which was really fun. I got the number from the user then passed it to the first method which took the user args then passed that twice to the 2nd method until it reached 0. and each time it passed it was -1 from the 2nd instance of the number. 
+
+
+
+
+
