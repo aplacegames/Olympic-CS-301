@@ -1,1 +1,42 @@
+**Textbook**
+An abstraction is a simplified description of something that captures its essential elements while suppressing all other details.
+Ability to define new data types and to manipulate objects holding data-type values is also known as data abstraction, and leads us to a style of modular programming that naturally extends the procedural programming style 
+The eight primitive data types (boolean, byte, char, double, float, int, long, and short)
+A data type is a set of values and a set of operations defined on those values.
+In other words, you do not need to know how a data type is implemented to be able to use it
+The purpose of an API is to provide the information that you need to write a client program that uses the data type.
+In Java, each data-type value is stored in an object
+A constructor creates an object and returns to the client a reference to that object, not the object itself (hence the name reference type). 
+A constructor creates an object and returns to the client a reference to that object, not the object itself (hence the name reference type). 
+• As an argument or return value for a method
+• In an assignment statement
+• In an array
+You can distinguish between the uses of the two types of methods in our client code, because a static method call typically starts with a class name (uppercase, by convention) and an instance method call typically starts with an object name (lowercase, by convention)
+An object from a data type is immutable if its data-type value cannot change once created
+An object from a data type is immutable if its data-type value cannot change once created
+The public and private modifiers control access from client code: we designate every instance variable and method within a class as either public (this entity is accessible by clients) or private (this entity is not accessible by clients). The final modifier indicates that the value of the variable will not change once it is initialized—its access is read-only. Our convention is to use public for the constructors and methods in the API (since we are promising to provide them to clients) and private for everything else. Typically, our private methods are helper methods used to simplify code in other methods in the class. 
+ instance methods declare instance variables These declarations appear as the first statements in the class, not inside main() or any other method.
+ There is a critical distinction between instance variables and the local variables defined within a method or a block that you are accustomed to: there is just one value corresponding to each local variable at a given time, but there are numerous values corresponding to each instance variable (one for each object that is an instance of the data type
+ A constructor is a special method that creates an object and provides a reference to that object
+ constructor signature has no return type
+ • Allocates memory for the object
+• Invokes the constructor code to initialize the instance variables
+• Returns a reference to the newly created object
+When a client invokes an instance method, the system initializes the parameter variables with client values; executes statements until it reaches a return statement; and returns the computed value to the client, with the same effect as if the method invocation in the client were replaced with that return value
+• Parameter variables - pass value from client to method 
+• Local variables temp use within method 
+• Instance variables specify data type value
+A wide interface is one that has an excessive number of methods. 
+Avoid Wide interface
+The process of separating clients from implementations by hiding information is known as encapsulation
+The key to success in modular programming is to maintain independence among modules
+When you declare an instance variable (or method) to be private, you are making it impossible for any client (code in another class) to directly access that instance variable (or method). 
+immutable if its data-type value cannot change once created.
+ immutable types are easier to use and harder to misuse because the scope of code that can change their values is far smaller than for mutable types
+ You can use the final modifier to help enforce immutability in a data types
 
+Coding Assignments 
+Once - this one was pretty fun I remember doing something like this in leetcode a while ago and I was trying to find my solution to that but couldnt find it. I did remember a trick on finding it and it was using the lastindexof and indexof and using an if statemnent to check if the numbers match, it it matches then that means only 1 of that char. I did extend it with helper methods to pass it and used recursion to loop through the string. 
+ROT13 - this one took me a bit because I was overthinking it, I was thinking about using hashmaps and arrays to make a dictionary to hold the places and then make a counter that will access those dictinoaries but it was getting way to complicated fast adn decided to just keep it simple and use if statments to check if it was upper or lower case and then count 13 places either to the left or right pending on the character that was typed inthe string
+CustomDate - this one was hard even though there was some starter code that i utilized from the textbook companion website. I was having a hard time with the methods and how I was calling them with each other and having a hard time with usiung ref and this to get it to work properly I need to work more on those later. 
+SodaMachine - this one was very difficult for me in the sense that I was going to do a lot ii kept on thinking i need to make this and this and this without trying to focus on what i actually needed to do for the program. but i had the same pitfalls in i was having a hard time with making new data types and trying to use them, need to work on that more. 
