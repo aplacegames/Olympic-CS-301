@@ -1,1 +1,73 @@
+**Textbook** 
+pay attention to cost 
+scientific method 
+	observe
+	hypothesize
+	predict
+	verify
+	validate 
+order of growth 
+	constant = 1 
+	log = log n
+	linear = n 
+	linearithmic = n log n
+	quadradic = n^2
+	cubic = n^3
+	exponential = 2^n
+It is natural to think that if you buy a new computer that is 10 times faster and has 10 times more memory than your old one, you can solve a problem 10 times the size, but that is not the case for quadratic-time or cubic-time algorithms.
+his kind of situation is the primary reason that linear and linearithmic algorithms are so valuable: with such an algorithm and a new computer that is 10 times faster with 10 times more memory than an old computer, you can solve a problem that is 10 times larger than could be solved by the old computer in the same amount of time. In other words, you cannot keep pace with Moore’s law if you are using a quadratic-time or a cubic-time algorithm.
 
+For example, suppose that a[] is an array of length m and b[] is an array of length n. Consider the following code fragment that counts the number of (unordered) pairs i and j for which a[i] + b[j] equals 0:
+
+Click here to view code image
+
+for (int i = 0; i < m; i++)
+   for (int j = 0; j < n; j++)
+      if (a[i] + b[j] == 0)
+         count++;
+An array of objects is an array of references to the objects, so we need to account for both the memory for the references and the memory for the objects
+Good performance is important to the success of a program. An impossibly slow program is almost as useless as an incorrect one, so it is certainly worthwhile to pay attention to the cost at the outset, to have some idea of which sorts of problems you might feasibly address. In particular, it is always wise to have some idea of which code constitutes the inner loop of your programs
+LIFO, FIFO
+For collections such as stacks and queues, an important objective is to ensure that the amount of memory used is proportional to the number of items in the collection. 
+he use of a fixed-length array to implement a stack in ArrayStackOfStrings works against this objective: when you create a stack with a specified capacity, you are wasting a potentially huge amount of memory at times when the stack is empty or nearly empty. This property makes our fixed-length array implementation unsuitable for many applications
+When do I use new with Node
+ As with any other class, you should use new only when you want to create a new Node object (a new node in the linked list). You should not use new to create a new reference to an existing Node object. For example, the code
+By declaring the nested class Node to be private, methods in the enclosing class can refer to Node objects, but access from other classes is prohibited
+A symbol table is a collection of key–value pairs. We use a generic type Key for keys and a generic type Value for values—every symbol-table entry associates a Value with a Key. These assumptions lead to the following basic API:
+The keys() method provides clients with a way to iterate over the key–value pairs in the data structure.
+implementations of put and get that can provide performance guarantees.
+Your first step in understanding symbol tables is to download Lookup.java and ST.java (the industrial-strength symbol-table implementation that we consider at the end of this section) from the booksite to do some symbol-table searches. You can find numerous comma-separated-value (.csv) files that are related to various applications that we have described, including amino.csv (codon-to-amino-acid encodings), DJIA.csv (opening price, volume, and closing price of the stock market average, for every day in its history), and ip.csv (a selection of entries from the DNS database). When choosing which field to use as the key, remember that each key must uniquely determine a value. If there are multiple put operations to associate values with the same key, the symbol table will remember only the most recent one (think about associative arrays). We will consider next the case where we want to associate multiple values with a key.
+Index (PROGRAM 4.4.2) is a prototypical example of a symbol-table client that uses an intermixed sequence of calls to get() and put(): it reads a sequence of strings from standard input and prints a sorted list of the distinct strings along with a list of integers specifying the positions where each string appeared in the input.
+
+To implement BSTs,
+private class Node
+    {
+       private Key key;
+       private Value val;
+       private Node left, right;
+    }
+
+To (slightly) simplify the code, we add a constructor to Node that initializes the key and val instance variables:
+
+Node(Key key, Value val)
+{
+   this.key = key;
+   this.val = val;
+}
+
+Moreover, the put() and get() methods in BST are remarkably efficient: typically, each accesses a small number of the nodes in the BST (those on the path from the root to the node sought or to the null link that is replaced by a link to the new node). Next, we show that put operations and get requests take logarithmic time (under certain assumptions). Also, put() only creates one new Node and adds one new link. If you make a drawing of a BST built by inserting some keys into an initially empty tree, you certainly will be convinced of this fact—you can just draw each new node somewhere at the bottom of the tree.
+tree flow- left subtree-root-right subtree
+hashing or BSTs? The first point to consider is whether the client has comparable keys and needs symbol-table operations that involve ordered operations such as selection and rank. If so, then you need to use BSTs. If not, most programmers are likely to use hashing, because symbol tables based on hash tables are typically faster than those based on BSTs, assuming you have access to a good hash function for the key type.
+Small-world graphs are characterized by the following three properties:
+
+• They are sparse: the number of edges is much smaller than the total potential number of edges for a graph with the specified number of vertices.
+
+• They have short average path lengths: if you pick two random vertices, the length of the shortest path between them is short.
+
+• They exhibit local clustering: if two vertices are neighbors of a third vertex, then the two vertices are likely to be neighbors of each other.
+
+**assignments** 
+BinarySearch - This one was the funnest of the assignments this week as it was a simple binary search that I have implimented before in another class and was fun to go back to and update the code. 
+Parentheses - This one was tricky because I remember doing a problem like this on leetcode and it took a while to find that solution for that one but it was different overall as that solution was written in python and was having some trouble translating it over into java. but ultimately it worked and was fun to be able to use a dictionary to hold the values.
+FindKthLargest - This one was so tricky because of the o(n) time complexity. I thought I had it at early as i just did the sort() in java but found out that it has a large time complexity and had to start over. at first I was thinking ust 1 for loop with and if but it did not go thorugh the array enough times and started to think of how it would work with the time complexity. I ended up doing 2 methods with o(n) in both of them. one had a for and if and the other had an  while and if. both of those together would go thorugh a range from the largest to the target index and stop and did not sort anything past that saving time ansd space which i thought was pretty cool. I was having issues implimenting the pivot point and the swapping as i was getting mixed up and had to change the variable names ti something more clear so i would not confuse myself. i decided to keep the print statement in the sorting method to check my weork but so i can see hwo it was traversing through the array. 
+HashST - This one was really fun, as the starting code did all the liftinge eith making nodesandwas easy to put in the keys and size and contains. it was with the haskey that would puick a slot for it to go into and the sold holds  alink list node and would put a value and next int it. i did the contains as a bool as it is checking if it has siomething in it or not. the siaze simple as it was returning n value fgrom aboive. the iritable keyt was ahrd as I kept on putting key instead of Key and got lost with which key was goign where but eventually I figured out the typo and got it working. 
