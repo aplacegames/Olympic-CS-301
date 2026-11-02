@@ -1,2 +1,2 @@
-![DFA Diagram](relative/path/to/DFA Diagram.png)
-![NFA Diagram](relative/path/to/NFA Diagram.png)
+![DFA Diagram](mod6/DFA Diagram.png)
+![NFA Diagram](mod6/NFA Diagram.png)
