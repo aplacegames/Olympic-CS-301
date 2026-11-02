@@ -1,4 +1,4 @@
-![DFA Diagram](mod6/DFA-Diagram.png)
+![DFA Diagram](DFA-Diagram.png)
 
 
 
