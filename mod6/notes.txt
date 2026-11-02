@@ -1,1 +1,76 @@
 
+**Textbook**
+
+Definition. An alphabet is a finite set of symbols.
+
+Definition. A string is a finite sequence of alphabet symbols.
+
+Definition. A formal language is a set of strings (possibly infinite), all over the same alphabet.
+
+Our goal is to work with precise, complete definitions of formal languages. This task is known as the specification problem for formal languages.
+Once we have a way to specify a language, we are left with the following problem: given a language L and a string x, answer the following question: Is x in L, or not
+Deterministic finite-state automata
+• A finite number of states, each of which is designated as either an accept state or a reject state.
+
+• A set of transitions that specify how the machine changes state. Each state has one transition for each symbol in the alphabet.
+
+• A tape reader initially positioned at the first symbol of an input string and capable only of reading a symbol and moving to the next symbol.
+A nondeterministic finite automaton (NFA) is an abstract machine that allows other possibilities. Specifically, NFAs are the same as DFAs, but with restrictions on the transitions leaving each state removed, so that
+
+• Multiple transitions labeled with the same symbol are allowed.
+
+• Unlabeled state transitions (null transitions) are allowed.
+
+• Not all symbols need be included among the transitions leaving each state.
+• Start by finding all possible states that can be reached by null transitions from the start state. This is the set of possible states that the NFA could reach before reading the first symbol.
+
+• Find all states that can be reached by an edge labeled with the first input symbol, then all states that can be reached from one of those by null transitions. This is the set of possible states that the NFA could reach before reading the second symbol.
+
+• Iterate this process, keeping track of all possible states that the NFA could reach before reading each input symbol, until the input is exhausted
+By definition, a language is regular if we can write a regular expression that describes it, and any regular expression describes a regular language.
+Turing machine model
+• A finite number of states, each of which is designated as either a left state, a right state, a halt state, an accept state, or a reject state.
+
+• A set of transitions that specify which state is next and which symbol to write. Each state has one transition for each symbol in the alphabet.
+
+• A tape that holds a string of symbols.
+
+• A tape head capable of reading or writing a symbol and moving left or right to read the next symbol.
+
+• Read a symbol.
+
+• Note the transition associated with that symbol and the current state.
+
+• Write the symbol specified by the transition.
+
+• Change state as specified by the transition.
+
+• Move the tape head right one position if the new state is a right state.
+
+• Move the tape head left one position if the new state is a left state.
+
+• If the new state is a halt, accept, or reject state, halt operation.
+
+• Illuminate the light corresponding to the final state.
+As with DFAs, you certainly should not delve into the design and developments of TMs of the complexity called for in our exercises without a TM programming environment for use in debugging and tracing. As you might expect, creating a Java program that can simulate any TM is not a particularly difficult task. Of course, we use such a program to test the TMs in this book and to generate the traces. Next, we examine that program.
+• Read the number of states and the alphabet.
+
+• Create an array of strings for the state actions and, for L and R states, two arrays of symbol tables, one for the state transitions and one for the overwrite symbols.
+
+• Populate these data structures by reading the information for each state from the given file.
+• It is often simpler to develop an upper bound on running time as a function of the input size, rather than to characterize the inputs in some other way. For example, an appealing alternative might be to study the average case, but that requires developing a probabilistic model for the input (which can be a challenge) and mathematical analysis of algorithm behavior under that model (which can be even more of a challenge).
+
+• Algorithms with guaranteed worst-case performance are a worthy goal, often achieved in practice and required in practical applications. For example, you would certainly prefer that the software used to land your plane, stop your car, or control your pacemaker has guaranteed worst-case performance.
+The theory says that there are many important problems for which we cannot reasonably expect to create an algorithm that simultaneously achieves the following three properties:
+
+• Guarantee to solve the problem to optimality (for optimization problems)
+
+• Guarantee to solve the problem in polynomial time
+
+• Guarantee to solve arbitrary instances of the problem
+we must relax at least one of these three requirements
+For example, there are non-approximability results of this form: if you can find an approximation algorithm for a particular problem that guarantees to get within a factor of 2 of optimal, then P = NP. Designing approximation algorithms for such NP-complete problems is not possible, unless, of course, P = NP.
+ First, quantum computing has led some people to doubt the extended Church–Turing thesis (but there is still no evidence to suggest that NP-complete problems can be solved in polynomial time on a quantum computer, even if it were to become a physically realizable computing device). Second, the no one has proved a search single problem to be intractable—that would be a proof that P is not equal to NP.
+
+**Coding Assignments** 
+MatchingPhoneNumber - I have not done regex in a long time but I did remember how to solve this problem as I had to do this is some of the other classes that I had done in the past. The tricky thing with this one was trying to remember the regex pattern for the parentheses and how to include it into the pattern for it to recognize it. I also added a scanner do it is more user friendly when trying to input numbers for someone to check and looks cleaner in my opinion. 
