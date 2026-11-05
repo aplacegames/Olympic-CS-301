@@ -1,1 +1,113 @@
+Textbook 
 
+Decidability 
+Suppose that we put an input string on the tape and start a Turing machine at its start state. There are four possible outcomes. The machine might:
+
+• Halt in a state labeled Yes (accept the input string)
+
+• Halt in a state labeled No (reject the input string)
+
+• Halt in a state labeled H (halt without either accepting or rejecting)
+
+• None of the above (enter into an infinite loop)
+We say that a Turing machine recognizes the language that consists of all input strings that lead the machine to an accept state. If, in addition, the Turing machine halts (ends in a state labeled No or H) for all input strings not in the language it recognizes, we further say that the Turing machine decides the same language. It must always give the correct answer and it must halt on every input.
+Computability- computing a function. We say that a function f (x) is computable if there exists some Turing machine such that when its tape is initialized to x, it leaves the string f (x) on the tape.
+In the theory of computing, the terms Turing machine and algorithm can be used interchangeably, allowing us to make sweeping statements about “all algorithms” or “all algorithms for a specific task” with mathematical rigor.
+The Church–Turing thesis is not a mathematical statement, and it is not subject to rigorous proof. The reason for this is that we cannot mathematically define what we mean by a “physically realizable computing device.”
+NOW THAT WE HAVE A CLEAR notion of what an algorithm is—the Turing machine—we can explore the nature of computation by proving facts about Turing machines. The Church–Turing thesis tells us that whenever we have a finite, deterministic, and effective method on any kind of computational device for solving a problem, we expect that there exists a Turing machine that solves it. The idea is much more powerful in the contrapositive: if we can show that no Turing machine exists that decides a language or computes a function, then we expect that no physically harnessable process exists for that task
+Unsolvability is a very strong statement about a problem. It says not only that scientists have not discovered an algorithm for the problem, but that such a discovery is impossible. Knowing about unsolvability is important because it is useful to know that you are trying to solve an unsolvable problem so you can avoid wasting time and effort trying to solve it and move on to an easier variant of the problem.
+• Mathematics is consistent: It is not possible to prove both a statement and its opposite, nor something like 1 = 2.
+
+• Mathematics is complete: If a mathematical statement is true, then it is possible to prove that it is true.
+
+• Mathematics is decidable: For any mathematical theorem, there is a step-by-step application of axioms that can lead to a proof.
+the halting problem is unsolvable. Informally, the halting problem is simple to describe: given a program and its input, determine whether that program will halt when run on that input. Since computers do not actually halt much nowadays, we use the term halt to be synonymous with does not enter into an infinite loop.
+The idea that a problem can be unsolvable may shatter your preconceived notions about computation, so we recommend that you go over the proof several times until you are simultaneously convinced and amazed by the idea. It is one of the most important ideas of the 20th century.
+ A problem A reduces to another problem B if, given a subroutine for B, we can solve any instance a of A as follows:
+
+• Process a and create instances b1, b2, ... of B.
+
+• Using the subroutine for B, obtain solutions to b1, b2, ....
+
+• Use the solutions of b1, b2, ... to help solve a.
+Totality
+
+As a first example, consider the totality problem. Can we write a program that takes a function as input and determines whether it enters an infinite loop for any input? 
+Proposition A. The totality problem is unsolvable.
+
+Proof sketch: Taking totality as “problem B,” suppose that we have a Java function alwaysHalts() that solves it: alwaysHalts() takes any function f as an argument and prints Yes if f(x) halts for all x and prints No if f(x) enters into an infinite loop for some x. Now, here is a way to solve the halting problem using alwaysHalts(): Given any function f and argument x, define a function g() that takes no arguments and just calls f(x). Then the call alwaysHalts(g) prints Yes if f(x) halts; otherwise, it prints No. That is, it solves the halting problem. This is a contradiction, so our original assumption that alwaysHalts() exists must be false. That is, the totality problem is unsolvable.
+Proposition B. The program equivalence problem is unsolvable.
+
+Proof: Suppose that we have a Java function areEquivalent() that takes any functions f and g as argument, and prints Yes if they are equivalent and No otherwise. Given any Java function f(), we call areEquivalent(f, h), where h is a function that just returns. This is the same question as determining whether f() never enters a loop for any input, the totality problem.
+Determining whether a given program has any given functional property is unsolvable.
+Unsolvability is not just about programs that process programs (important as those applications are). Over the several decades since Turing introduced the concept, researchers have used reduction to vastly expand the number of problems known to be unsolvable. Applications abound in all areas of mathematics, science, and engineering. In each case, some known unsolvable problem is shown to reduce to a new problem, proving the new problem to be unsolvable because a solution to it would imply a solution (eventually) to the halting problem. A number of important and intriguing examples are cited on the table on page 815, and we discuss some of them in more detail next.
+The existence of unsolvable problems has profound consequences in both computation and philosophy. It says that all computers are governed by intrinsic limitations on computation. No matter how important they might be, we must recognize that there are problems that cannot be solved.
+Beyond its practical importance, unsolvability (along with the Church–Turing thesis) provides a glimpse into the computational laws of nature and raises a host of fascinating philosophical questions. For example, if the Church–Turing thesis applies to the human brain, then humans would be incapable of solving problems like the halting problem. Humans may have fundamental limitations, just like computers. Are any natural processes universal? If so, are there conditions that cannot exist in the natural world because of unsolvability? Is there a natural process that violates the Church–Turing thesis? These sorts of questions have challenged mathematicians and philosophers ever since the implications of Turing’s work became widely known. The widespread view that his paper was one of the most important scientific papers of the 20th century is certainly justified.
+• Universality. A Turing machine can perform any computation (decide a language or compute a function) that can be described by any physically realizable computing device. This idea is known as the Church–Turing thesis. This statement about the natural world cannot be proven (but it can be falsified). The evidence in favor of the thesis is that mathematicians and computer scientists have developed numerous models of computation, but they all have been proven equivalent to the Turing machine.
+
+• Computability. There exist problems that cannot be solved by a Turing machine (or by any other physically realizable computing device, by universality). This is a mathematical truth. The famous halting problem (no program can guarantee to determine whether a given program will halt) is such a problem.
+Extended Church–Turing thesis. A Turing machine can efficiently perform any computation (decide a language or compute a function) that can be efficiently computed by any physically realizable computing device.
+Conversely, our program TuringMachine represents a proof that any Turing machine that runs in time proportional to T(n) can be simulated on your computer in time proportional to T(n). The extended Church–Turing thesis implies that, in principle, to make future computers more efficient, we need focus only on improving the implementation technology of present-day computer designs, not creating new design
+The purpose of the theory of intractability is to separate problems that can be solved in polynomial time from problems that seem to require exponential time.
+Exponential growth dwarfs technological changes: a supercomputer may be a quadrillion times faster than an abacus, but neither can come close to solving a problem that requires 2200 steps. Also, it is not difficult to develop algorithms that would exhaust all available resources trying to use that many steps, as illustrated by several examples on the next few pages.
+• It is often simpler to develop an upper bound on running time as a function of the input size, rather than to characterize the inputs in some other way. For example, an appealing alternative might be to study the average case, but that requires developing a probabilistic model for the input (which can be a challenge) and mathematical analysis of algorithm behavior under that model (which can be even more of a challenge).
+
+• Algorithms with guaranteed worst-case performance are a worthy goal, often achieved in practice and required in practical applications. For example, you would certainly prefer that the software used to land your plane, stop your car, or control your pacemaker has guaranteed worst-case performance.
+Each of the examples just described has the flavor of “try all possibilities to solve the problem.” Everyone using a computer to solve a problem must understand that this approach will often not be effective because of exponential growth. Think carefully about this fact, because it runs counter to the natural intuition that computers are so fast they should be able to solve any problem, given enough time (ask some friends whether they think that computers will be fast enough to test all possible orders of a deck of cards). We consider a problem to be “difficult to solve” if the only known algorithms that solve it are exponential, by the definition on page 826. We generally take for granted that an exponential-time algorithm cannot be guaranteed to solve a problem of size 1,000 (say) in a reasonable amount of time, because no one can wait for an algorithm to take 21,000 or 1,000! steps, regardless of the speed of the computer
+Linear equation satisfiability. Given a set of n linear equations involving n variables, find an assignment of rational values to the variables that satisfies all of the equations, or report that none exists.
+
+Linear inequality satisfiability. Given a set of m linear inequalities involving n variables, find an assignment of rational values to the variables that satisfies all of the inequalities, or report that none exists.
+
+Integer linear inequality satisfiability. Given a set of m linear inequalities involving n variables, find an assignment of integer values to the variables that satisfies all of the inequalities, or report that none exists.
+
+Boolean satisfiability. Given a set of m equations involving n boolean variables, find an assignment of boolean values to the variables that satisfies all of the equations, or report that none exists.
+Definition. NP is the set of all search problems.
+NP is nothing more than a precise characterization of all the problems that scientists, engineers, and applications programmers aspire to solve with programs that are guaranteed to finish in a feasible amount of time. Examples of the problems in NP that we have discussed are summarized on page 838. Next, we consider several examples in more detail.
+OUR USE OF SEARCH PROBLEMS TO define NP is just one of three widely accepted approaches found in the literature to characterize the set of problems that form the basis of the study of intractability. The other two possibilities are decision problems (does a solution exist?) and optimization problems (which is the best solution)? For example, here are three ways to pose the problem of vertex cover. Given a graph G, we have the following three problems:
+
+• Optimization: Find a vertex cover of G with the fewest vertices.
+
+• Decision: Does G have a vertex cover with at most m vertices?
+
+• Search: Find a vertex cover of G with at most m vertices.
+Nondeterminism
+
+The N in NP stands for nondeterminism. It represents the idea that one way (in theory) to extend the power of a computer is to endow it with the power of nondeterminism: to assert that when an algorithm is faced with a choice among several options, it has the power to “guess” the right one.
+Definition. P is the set of all search problems that can be solved in polynomial time.
+The definition of NP says nothing about the difficulty of finding the solution; it just checks that a purported solution is valid. The second of the two sets of problems that form the basis of the study of intractability, which is known as P, is concerned with the difficulty of finding the solution.
+Definition. A problem is intractable if there exists no polynomial-time algorithm to solve it.
+Put another way, we certainly would like to know which search problems are in P and which are intractable, but no one has been able to find a single problem that can be proven to be in NP but not in P (or even prove that one exists), leaving open the following fundamental question
+• Are there any difficult-to-solve (intractable) search problems?
+
+• Is a brute-force solution the best we can do for some search problems?
+
+• Is finding the solution to a search problem fundamentally more difficult than checking whether a purported solution is valid?
+
+• Would it be fundamentally more efficient to solve some search problems on a nondeterministic computing device than on a deterministic computing device?
+To test your understanding of the use of reduction, take the time to convince yourself that the following three facts are true:
+
+• If A polynomial-time reduces to B and B is in P, then A is in P.
+
+• Any problem in P polynomial-time reduces to any problem at all.
+
+• Polynomial-time reduction is transitive: if A polynomial-time reduces to B and B polynomial-time reduces to C, then A polynomial-time reduces to C.
+Many, many problems are known to belong to NP but are not known to be in P. That is, we can easily check that any given solution is valid, but, despite considerable effort, no one has been able to develop an efficient algorithm to find a solution. Remarkably, these many, many problems have an additional property that provides convincing evidence they are all intractable and that P ≠ NP. We start by defining this property:
+
+Definition. A search problem B is NP-complete if every search problem A polynomial-time reduce to B
+Proposition D. A problem is NP-complete if
+
+• It is in NP (it has to be a search problem).
+
+• Some NP-complete problem A polynomial-time reduces to it.
+
+Proof: Immediate by transitivity of reduction. Any problem in NP polynomial-time reduces to A, which polynomial-time reduces to the given problem.
+The theory says that there are many important problems for which we cannot reasonably expect to create an algorithm that simultaneously achieves the following three properties:
+
+• Guarantee to solve the problem to optimality (for optimization problems)
+
+• Guarantee to solve the problem in polynomial time
+
+• Guarantee to solve arbitrary instances of the problem
+we must relax at least one of these three requirements
+For example, there are non-approximability results of this form: if you can find an approximation algorithm for a particular problem that guarantees to get within a factor of 2 of optimal, then P = NP. Designing approximation algorithms for such NP-complete problems is not possible, unless, of course, P = NP.
+ First, quantum computing has led some people to doubt the extended Church–Turing thesis (but there is still no evidence to suggest that NP-complete problems can be solved in polynomial time on a quantum computer, even if it were to become a physically realizable computing device). Second, the no one has proved a search single problem to be intractable—that would be a proof that P is not equal to NP.
