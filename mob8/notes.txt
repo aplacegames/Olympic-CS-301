@@ -1,1 +1,93 @@
+Since the hex base 16 is a power of the binary base 2, we can convert groups of 4 bits to hex digits, and vice versa. To convert from hex to binary, replace each hex digit by the four binary bits corresponding to its value (see the table at right). Conversely, given the binary representation of a number, add leading 0s to make the number of bits a multiple of 4, then group the bits 4 at a time and convert each group to a single hex digit.
+Conversion from decimal to binary
 
+We have considered the problem of computing the string of 0s and 1s that represent the binary number corresponding to a given integer as an early programming example. The following recursive program (the solution to EXERCISE 2.3.15) does the job, and is worthy of careful study:
+
+Click here to view code image
+
+public static String toBinaryString(int n)
+{
+    if (n == 0) return "";
+    if (n % 2 == 0)
+       return toBinaryString(n/2) + '0';
+    else
+       return toBinaryString(n/2) + '1';
+}
+
+
+
+Integer arithmetic
+
+The first operations that we consider on integers are basic arithmetic operations like addition and multiplication. Indeed, the primary purpose of early computing devices was to perform such operations repeatedly. In the next chapter, we will be studying the idea of building computational devices that can do so, since every computer has built-in hardware for performing such operations. For the moment, we illustrate that the basic methods you learned in grade school for decimal work perfectly well in binary and hex.
+Integer arithmetic
+
+The first operations that we consider on integers are basic arithmetic operations like addition and multiplication. Indeed, the primary purpose of early computing devices was to perform such operations repeatedly. In the next chapter, we will be studying the idea of building computational devices that can do so, since every computer has built-in hardware for performing such operations. For the moment, we illustrate that the basic methods you learned in grade school for decimal work perfectly well in binary and hex.
+• If both integers are non-negative, then standard binary addition as we have described it applies, as long as the result is less than 2n – 1.
+
+• If both integers are negative, then the sum is
+
+(2n – x) + (2n – y) = 2n + 2n – (x + y)
+
+• If x is negative, y is positive, and the result is negative, then we have
+
+(2n – x) + y = 2n – (x – y)
+
+• If x is negative, y is positive, and the result is positive, then we have
+
+(2n – x) + y = 2n + (y – x)\
+
+It is a 7-bit code, though in modern computing it most often is used in 8-bit bytes, with the leading bit being ignored.
+The dominant implementation of Unicode is known as UTF-8. UTF-8 is a variablewidth character encoding that uses 8 bits for ASCII characters, 16 bits for most other characters, and up to 32 bits for some characters. The rules are complicated but comprehensive, and they are implemented in most modern systems (such as Java) so programmers generally need not worry much about the details
+The dominant implementation of Unicode is known as UTF-8. UTF-8 is a variablewidth character encoding that uses 8 bits for ASCII characters, 16 bits for most other characters, and up to 32 bits for some characters. The rules are complicated but comprehensive, and they are implemented in most modern systems (such as Java) so programmers generally need not worry much about the details
+TOY components
+
+We begin with an overview of the basic design components that have been found in virtually all computers for more than half a century, but are reduced to their essentials in our TOY machine.
+Memory
+
+The memory is a critical component of any computer. It holds not only data to be processed and the results of the computation, but also any program that the machine is to run. TOY’s memory consists of 256 words, each 16 bits. 
+Instructions
+
+A critical characteristic of the TOY machine (and virtually all other computers) is that the contents of a memory word might be interpreted either as data or as an instruction, depending on the context. For example, you know from the previous section that the value 1234 might be interpreted as representing the integer 466010 or the real number 0.00302886962890625; in this section you will learn that it might also represent a machine instruction that adds two numbers.
+Registers
+
+A register is a machine component that holds a sequence of bits, much like a word in main memory. Registers serve the function of holding intermediate results during computation.
+Arithmetic logic unit
+
+The arithmetic logic unit (ALU) is TOY’s computational engine—the workhorse of the machine that performs all its calculations. Typically, a TOY instruction directs the ALU to compute some function that takes two registers as arguments and put the result in a third registe
+Program counter and instruction register
+
+The 8-bit program counter (PC) is an internal register that holds the address of the next instruction to be executed. The 16-bit instruction register (IR) is an internal register that contains the current instruction being executed. These registers are central to the operation of the machine. The IR is not directly accessed by programs, but programmers are always aware of its contents.
+Fetch–increment–execute cycle
+
+The TOY machine executes instructions by taking a specific sequence of actions, repeatedly. First it checks the value of the PC and fetches (copies) the contents of this memory location into the IR. Next, it increments the program counter by 1. 
+Instructions
+
+Any 16-bit value (the contents of any memory word) can be interpreted as a TOY instruction. The purpose of each instruction is to modify the state of the machine (the value of a memory word, a register, or the PC) in some way. 
+Instruction set
+
+On the next page is a table that describes all of TOY’s instructions
+Pushbuttons
+
+Perhaps the most basic control for a computer is to turn it on or off. The PDP-8 had a key for this purpose; TOY has a pushbutton. The first thing a programmer would do is to turn the machine on (and the last thing would be to turn it off). Additionally, three other basic functions are controlled by pushbuttons:
+
+• Load a word into the computer’s memory.
+
+• Look at the value of a word in the computer’s memory.
+
+• Run a program.
+Switches
+
+Programmers using such machines specify binary values with on/off switches. A switch in the up position denotes 1; a switch in the down position denotes 0. 
+Lights
+
+TOY’s output devices are the banks of lights under the switches. Again, an 8-light bank specifies a location in the memory and a 16-light bank specifies a memory-word value.
+Such code is known as self-modifying code. We have included this program because it succinctly illustrates the fundamental concept of stored-program computing. Is the content of memory location 12 an instruction or data? It is both! When we add 1 to it, it is data, but when the PC refers to it and it is loaded into the IR, it is an instruction. Since the program and data share the same memory, the machine can modify its data or the program itself while it is executing. That is, code and data are the same, or at least they can be. The memory is interpreted as an instruction when the program counter references it, and as data when an instruction references it.
+
+Self-modifying code liked this is rarely used in modern computing because it is difficult to understand, debug, and maintain. We will consider an alternative method of adding a sequence of numbers in the next section. But the ability to process instructions as data is fundamental in computing, as discussed next and throughout the rest of this chapter.
+On reflection, you can see that the ability to treat the program as data is crucial and essential in our modern computational infrastructure:
+
+• Any application is treated as data while you are downloading or installing it, but as a program once you launch it.
+
+• Compilers are programs that read in other programs as input data and produce machine-language programs as output data, so all programming languages depend on this capability.
+
+• Modern cloud computing is based on the concept of a virtual machine, where one computer runs a program written for another computer. Indeed, TOY itself is a virtual machine, as you will see in SECTION 6.4.
