@@ -15,7 +15,8 @@ BAD = 11 10 13
   And the emulator is a program running other programs, it is a step by step process of the emulator that reads the instructions as data and then
   puts those data instructions into the emulator to show what it would have done in the original program. 
 
-3) | binary | hex | TOY instruction |
+3)
+| binary | hex | TOY instruction |
 |---|---|---|
 | 0001001000110100 | 1234 | R[2] <- R[3] + R[4] |
 | 1111111111111111 | FFFF | R[F] <- PC; PC <- FF |
